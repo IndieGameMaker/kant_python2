@@ -64,10 +64,12 @@
 # 은행 계좌 클래스
 
 class BankAccount:
+    # 클래스를 생성할 때 최초 1회 자동호출되는 파이썬 특수 메서드 __init__
     def __init__ (self, owner, balance):
         self.owner = owner          # 계좌 예금주
         self.balance = balance      # 잔액
-        
+
+    # 인스턴스를 print() 호출하면 자동으로 __str__
     def __str__(self):
         return f"예금주: {self.owner}, 잔액: {self.balance:,}"
 
@@ -91,7 +93,12 @@ class BankAccount:
         print(f"{amount:,} 출금 처리")
         return self.balance # 출금 후 잔액 리턴
 
+# 클래스로 부터 인스턴스를 생성
+# 인스턴스 = 클래스명(매개변수, ...)
 account_a = BankAccount("이재현", 100_000)
+
+
+# print(f"{account_a.owner} 의 잔액은 {account_a.balance}원 입니다.")
 print(account_a)
 account_a.deposit(500_000)
 
@@ -102,5 +109,5 @@ print(f"잔액:{account_a.withdraw(200_000):,}")
 print(f"잔액: {account_a.withdraw(300_000):,}")
 
 account_c = BankAccount("홍길동", 200_000)
-print([account_a, account_c])
-
+print(account_c)
+print([account_c, account_a])
